@@ -24,11 +24,12 @@ public:
 
 	~Tree(){}
 
-	void Add(TYPE data)
+	void Add(const TYPE& data)
 	{
-		Node<TYPE> *new_node = new new_node;
+		Node<TYPE> *new_node = new Node<TYPE>;
 
 		root_node->d_list->Add(new_node);
+		new_node->data = data;
 		new_node->parent = root_node;
 	}
 };
