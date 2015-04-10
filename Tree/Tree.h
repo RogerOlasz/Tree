@@ -4,10 +4,10 @@
 #include "DList.h"
 
 template<class TYPE>
-struct Node
+struct TreeNode
 {
 	TYPE *data;
-	Node<TYPE> *parent;
+	TreeNode<TYPE> *parent;
 	DList<TYPE> *d_list;
 };
 
@@ -15,18 +15,18 @@ template<class TYPE>
 class Tree
 {
 public:
-	Node<TYPE> *root_node;
+	TreeNode<TYPE> *root_node;
 
 	Tree()
 	{
-		Node<TYPE> *root_node = new root_node;
+		TreeNode<TYPE> *root_node = new root_node;
 	}
 
 	~Tree(){}
 
 	void Add(const TYPE& data)
 	{
-		Node<TYPE> *new_node = new Node<TYPE>;
+		TreeNode<TYPE> *new_node = new TreeNode<TYPE>;
 
 		root_node->d_list->Add(new_node);
 		new_node->data = data;
