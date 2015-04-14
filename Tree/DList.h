@@ -3,19 +3,19 @@
 
 #include <iostream>
 
-template<class Type>
+template<class TYPE>
 struct  DNode
 {
-	Type value;
-	DNode<Type>* next;
-	DNode<Type>* previous;
+	TYPE value;
+	DNode<TYPE>* next;
+	DNode<TYPE>* previous;
 };
 
-template<class Type>
+template<class TYPE>
 class DList {
 
 private:
-	DNode<Type>* start;
+	DNode<TYPE>* start;
 
 public:
 	DList()
@@ -26,7 +26,7 @@ public:
 	unsigned int Count() const
 	{
 		unsigned int counter = 0;
-		DNode<Type>* tmp = start;
+		DNode<TYPE>* tmp = start;
 
 		while (tmp != NULL)
 		{
@@ -37,15 +37,15 @@ public:
 		return counter;
 	}
 
-	void Add(Type new_value)
+	void Add(TYPE new_value)
 	{
-		DNode<Type>* new_node = new DNode<Type>;
+		DNode<TYPE>* new_node = new DNode<TYPE>;
 		new_node->value = new_value;
 		new_node->next = NULL;
 
 		if (start != NULL)
 		{
-			DNode<Type>* tmp = start;
+			DNode<TYPE>* tmp = start;
 
 			while (tmp->next != NULL)
 			{
@@ -63,13 +63,13 @@ public:
 		}
 	}
 
-	bool Del(DNode<Type>* delete_node)
+	bool Del(DNode<TYPE>* delete_node)
 	{
 		if (start != NULL && delete_node != NULL)
 		{
 			if (start != delete_node)
 			{
-				DNode<Type>* tmp = start;
+				DNode<TYPE>* tmp = start;
 
 				while (tmp->next != delete_node)
 				{
@@ -116,7 +116,7 @@ public:
 		{
 			while (start->next != NULL)
 			{
-				DNode<Type>* node_to_delete = start;
+				DNode<TYPE>* node_to_delete = start;
 				start = start->next;
 				delete node_to_delete;
 			}
@@ -126,12 +126,12 @@ public:
 		return false;
 	}
 
-	DNode<Type>* getNodeAtPos(unsigned int position) const
+	DNode<TYPE>* getNodeAtPos(unsigned int position) const
 		{
 			if (start != NULL && position < Count())
 			{
 				unsigned int position_counter = 0;
-				DNode<Type>* tmp = start;
+				DNode<TYPE>* tmp = start;
 
 				while (position_counter != position)
 				{
