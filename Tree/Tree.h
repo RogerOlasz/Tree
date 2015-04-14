@@ -9,6 +9,16 @@ struct TreeNode
 	TYPE data;
 	TreeNode<TYPE> *parent;
 	DList<TreeNode*> d_list;
+
+	void VisitAll(DList<TYPE> list)
+	{
+		list->Add(data);
+
+		for (unsigned int i = 0; i <= d_list.Count(); i++)
+		{
+			VisitAll(list);
+		}
+	}
 };
 
 template<class TYPE>
@@ -45,21 +55,13 @@ public:
 
 		return new_node;
 	}
+	
+	
 
-	/*void VisitAll(DList<TYPE> *list)
-	{
-		list->Add(data);
-
-		for ()
-		{
-			node->VisitAll(list);
-		}
-	}
-
-	void VisitAllNodes(DList<TYPE> *list) const
+	void VisitAllNodes(DList<TYPE> list) const
 	{
 		root_node->VisitAll(list);
-	}*/
+	}
 };
 
 #endif __Tree_H__
