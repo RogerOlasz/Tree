@@ -6,8 +6,8 @@ int main(int argc, char** argv)
 
 	TreeNode<int> *a = tree1.Add(15);
 
-	/*tree1.Add(30, a);
-	tree1.Add(50, a);*/
+	tree1.Add(30, a);
+	tree1.Add(50, a);
 
 	return 0;
 }

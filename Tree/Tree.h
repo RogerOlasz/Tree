@@ -6,9 +6,9 @@
 template<class TYPE>
 struct TreeNode
 {
-	TYPE *data;
+	TYPE data;
 	TreeNode<TYPE> *parent;
-	DList<TYPE> *d_list;
+	DList<TreeNode*> d_list;
 };
 
 template<class TYPE>
@@ -19,7 +19,7 @@ public:
 
 	Tree()
 	{
-		TreeNode<TYPE> *root_node = new root_node;
+		root_node = new TreeNode<TYPE>;
 	}
 
 	~Tree(){}
@@ -28,25 +28,25 @@ public:
 	{
 		TreeNode<TYPE> *new_node = new TreeNode<TYPE>;
 
-		root_node->d_list->Add(new_node);
+		root_node->d_list.Add(new_node);
 		new_node->data = new_data;
 		new_node->parent = root_node;
 
 		return new_node;
 	}
 
-	TreeNode<TYPE>* Add(const TYPE& new_data, TreeNode *parent)
+	TreeNode<TYPE>* Add(const TYPE& new_data, TreeNode<TYPE> *parent)
 	{
 		TreeNode<TYPE> *new_node = new TreeNode<TYPE>;
 
-		parent->d_list->Add(new_node);
+		parent->d_list.Add(new_node);
 		new_node->data = new_data;
 		new_node->parent = parent;
 
 		return new_node;
 	}
 
-	void VisitAll(DList<TYPE> *list)
+	/*void VisitAll(DList<TYPE> *list)
 	{
 		list->Add(data);
 
@@ -59,7 +59,7 @@ public:
 	void VisitAllNodes(DList<TYPE> *list) const
 	{
 		root_node->VisitAll(list);
-	}
+	}*/
 };
 
 #endif __Tree_H__

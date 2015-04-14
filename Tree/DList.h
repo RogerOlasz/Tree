@@ -18,7 +18,7 @@ private:
 	DNode<TYPE>* start;
 
 public:
-	DList()
+	DList<TYPE>()
 	{
 		start = NULL;
 	}
