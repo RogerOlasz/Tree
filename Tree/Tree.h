@@ -12,7 +12,7 @@ struct TreeNode
 
 	void VisitAll(DList<TYPE> list)
 	{
-		list->Add(data);
+		list.Add(data);
 
 		for (unsigned int i = 0; i <= d_list.Count(); i++)
 		{
