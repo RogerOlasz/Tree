@@ -2,21 +2,57 @@
 #define __Tree_H__
 
 #include "DList.h"
+#include "StackArray.h"
 
 template<class TYPE>
 struct TreeNode
 {
 	TYPE data;
 	TreeNode<TYPE> *parent;
-	DList<TreeNode*> d_list;
+	DList<TreeNode*> children;
 
-	void VisitAll(DList<TYPE> list)
+	void PreOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		list.Add(data);
+		list->add(this);
 
-		for (unsigned int i = 0; i <= d_list.Count(); i++)
+		doubleNode<TreeNode*> *item = children.getFirst();
+
+		for (; item != NULL; item = item->next)
 		{
-			VisitAll(list);
+			item->value->PreOrderR(list);
+		}
+	}
+
+	void PostOrderR(DList<TreeNode<TREEDATA>*> *list)
+	{
+		doubleNode<TreeNode*> *item = children.getFirst();
+
+		for (item; item != NULL; item = item->next)
+		{
+			item->value->PostOrderR(list);
+		}
+
+		list->add(this);
+	}
+
+	void inOrderRecursive(DList<TreeNode<TREEDATA>*> *list)
+	{
+		unsigned int middle = ceil((float)children.count() / 2.0f);
+
+		doubleNode<TreeNode*> *item = children.getFirst();
+
+		for (unsigned int i = 0; i < middle; i++)
+		{
+			item->value->inOrderRecursive(list);
+			item = item->next;
+		}
+
+		list->add(this);
+		printf("%c", data);
+
+		for (; item != NULL; item = item->next)
+		{
+			item->value->inOrderRecursive(list);
 		}
 	}
 };
@@ -38,7 +74,7 @@ public:
 	{
 		TreeNode<TYPE> *new_node = new TreeNode<TYPE>;
 
-		root_node->d_list.Add(new_node);
+		root_node->children.Add(new_node);
 		new_node->data = new_data;
 		new_node->parent = root_node;
 
@@ -49,7 +85,7 @@ public:
 	{
 		TreeNode<TYPE> *new_node = new TreeNode<TYPE>;
 
-		parent->d_list.Add(new_node);
+		parent->children.Add(new_node);
 		new_node->data = new_data;
 		new_node->parent = parent;
 
