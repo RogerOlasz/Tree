@@ -14,8 +14,7 @@ struct TreeNode
 	void PreOrderR(DList<TreeNode<TYPE>*> *list)
 	{
 		list->add(this);
-
-		doubleNode<TreeNode*> *item = children.getFirst();
+		DNode<TreeNode*> *item = children.getFirst();
 
 		for (; item != NULL; item = item->next)
 		{
@@ -23,9 +22,9 @@ struct TreeNode
 		}
 	}
 
-	void PostOrderR(DList<TreeNode<TREEDATA>*> *list)
+	void PostOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		doubleNode<TreeNode*> *item = children.getFirst();
+		DNode<TreeNode*> *item = children.getFirst();
 
 		for (item; item != NULL; item = item->next)
 		{
@@ -35,24 +34,22 @@ struct TreeNode
 		list->add(this);
 	}
 
-	void inOrderRecursive(DList<TreeNode<TREEDATA>*> *list)
+	void InOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		unsigned int middle = ceil((float)children.count() / 2.0f);
+		unsigned int mid = ceil((float)children.count() / 2.0f); //Rounds x upward, returning the smallest integral value that is not less than x.
+		DNode<TreeNode*> *item = children.getFirst();
 
-		doubleNode<TreeNode*> *item = children.getFirst();
-
-		for (unsigned int i = 0; i < middle; i++)
+		for (unsigned int i = 0; i < mid; i++)
 		{
-			item->value->inOrderRecursive(list);
+			item->value->InOrderR(list);
 			item = item->next;
 		}
 
 		list->add(this);
-		printf("%c", data);
 
 		for (; item != NULL; item = item->next)
 		{
-			item->value->inOrderRecursive(list);
+			item->value->InOrderR(list);
 		}
 	}
 };
@@ -60,8 +57,10 @@ struct TreeNode
 template<class TYPE>
 class Tree
 {
+private:
+		TreeNode<TYPE> *root_node;
+
 public:
-	TreeNode<TYPE> *root_node;
 
 	Tree()
 	{
@@ -94,10 +93,21 @@ public:
 	
 	
 
-	void VisitAllNodes(DList<TYPE> list) const
+	void PreOrderR(DList<TreeNode<TYPE>*> *list) 
 	{
-		root_node->VisitAll(list);
+		root_node.PreOrderR(list);
 	}
+
+	void PostOrderR(DList<TreeNode<TYPE>*> *list)
+	{
+		root_node.PostOrderR(list);
+	}
+
+	void InOrderR(DList<TreeNode<TYPE>*> *list)
+	{
+		root_node.InOrderR(list);
+	}
+	
 };
 
 #endif __Tree_H__

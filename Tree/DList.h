@@ -126,6 +126,25 @@ public:
 		return false;
 	}
 
+	DNode<TYPE> *getFirst() const
+	{
+		return start;
+	}
+
+	DNode<TYPE> *getLast() const
+	{
+		if (start != NULL)
+		{
+			DNode<TYPE>* tmp = start;
+			while (tmp->next != NULL)
+			{
+				tmp = tmp->next;
+			}		
+			return tmp;
+		}
+		return NULL;
+	}
+
 	DNode<TYPE>* getNodeAtPos(unsigned int position) const
 		{
 			if (start != NULL && position < Count())
