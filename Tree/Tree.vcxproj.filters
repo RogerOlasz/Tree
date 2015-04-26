@@ -18,6 +18,9 @@
     <ClCompile Include="Main.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tree.h">
@@ -26,7 +29,7 @@
     <ClInclude Include="DList.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="TreeIterative.h">
+    <ClInclude Include="Stack.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

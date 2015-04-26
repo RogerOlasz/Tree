@@ -6,7 +6,7 @@
 template<class TYPE>
 struct  DNode
 {
-	TYPE value;
+	TYPE data;
 	DNode<TYPE>* next;
 	DNode<TYPE>* previous;
 };
@@ -37,10 +37,10 @@ public:
 		return counter;
 	}
 
-	void Add(TYPE new_value)
+	void Add(TYPE new_data)
 	{
 		DNode<TYPE>* new_node = new DNode<TYPE>;
-		new_node->value = new_value;
+		new_node->data = new_data;
 		new_node->next = NULL;
 
 		if (start != NULL)

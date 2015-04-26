@@ -1,11 +1,11 @@
-#ifndef __StackArray_H__
-#define __StackArray_H__
+#ifndef __Stack_H__
+#define __Stack_H__
 
 #include <iostream>
 #include <assert.h>
 
 template<class Type>
-class StackArray
+class Stack
 {
 public: 
 
@@ -13,11 +13,11 @@ public:
 	unsigned int allocated_memory;
 	unsigned int allocated_items;
 
-	StackArray() :data(NULL), allocated_memory(0), allocated_items(0) {}
+	Stack() :data(NULL), allocated_memory(0), allocated_items(0) {}
 
-	StackArray(unsigned int mem_size) : data(NULL), allocated_items(0) { Reallocate(mem_size); }
+	Stack(unsigned int mem_size) : data(NULL), allocated_items(0) { Reallocate(mem_size); }
 
-	~StackArray(){ if (data != NULL) delete[] data; }
+	~Stack(){ if (data != NULL) delete[] data; }
 
 	Type Peek(unsigned int position) const
 	{
@@ -86,6 +86,6 @@ public:
 	}
 
 };
-#endif // __StackArray_H__
+#endif // __Stack_H__
 
 

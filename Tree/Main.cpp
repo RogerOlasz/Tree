@@ -10,7 +10,5 @@ int main(int argc, char** argv)
 	tree1.Add(30, a);
 	tree1.Add(50, a);
 
-	tree1.PreOrderR(tree_list);
-
 	return 0;
 }

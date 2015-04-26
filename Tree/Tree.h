@@ -2,7 +2,7 @@
 #define __Tree_H__
 
 #include "DList.h"
-#include "StackArray.h"
+#include "Stack.h"
 
 template<class TYPE>
 struct TreeNode
@@ -91,7 +91,7 @@ public:
 		return new_node;
 	}
 	
-	
+	//Reiterative methods
 
 	void PreOrderR(DList<TreeNode<TYPE>*> *list) 
 	{
@@ -106,6 +106,54 @@ public:
 	void InOrderR(DList<TreeNode<TYPE>*> *list)
 	{
 		root_node.InOrderR(list);
+	}
+
+	//Iterative methods
+
+	void PreOrderI(DList<TreeNode<TYPE>*> *list)
+	{
+		Stack<TreeNode<TYPE>*> stack;
+		TreeNode<TYPE> *tmp_node = &root_node;
+
+		while (tmp_node != NULL)
+		{
+			list->Add(tmp_node);
+			DNode<TreeNode<TYPE>*> *tmp_dnode = tmp_node->children.getLast();
+
+			while (tmp_dnode != NULL)
+			{
+				stack.Push(tmp_dnode->data);
+				tmp_dnode = tmp_dnode->previous;
+			}
+		tmp_node = stack.Pop();
+	}
+
+	void PostOrderI(DList<TreeNode<TYPE>*> *list)
+	{
+		Stack<treeNode<TYPE>*> stack;
+		TreeNode<TYPE> *tmp_node = &root_node;
+		stack.Push(tmp_node);
+		
+		while (tmp_node != NULL)
+		{
+			DList<TreeNode<TYPE>*> *tmp_dnode = tmp_node->children.getLast();
+
+			if (tmp_dnode != NULL)
+			{
+				while (tmp_dnode->previous != NULL)
+				{
+					stack.Push(tmp_dnode->data);
+					tmp_dnode = tmp_dnode->previous;
+				}
+				stack.Push(tmp_dnode->data);
+				tmp_node = tmp_dnode->data;				
+			}
+			else
+			{
+				list->Add(tmp_node);
+				stack.Pop(tmp_node);
+			}
+		}
 	}
 	
 };
