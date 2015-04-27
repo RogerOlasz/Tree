@@ -13,12 +13,12 @@ struct TreeNode
 
 	void PreOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		list->add(this);
+		list->Add(this);
 		DNode<TreeNode*> *item = children.getFirst();
 
 		for (; item != NULL; item = item->next)
 		{
-			item->value->PreOrderR(list);
+			item->data->PreOrderR(list);
 		}
 	}
 
@@ -28,10 +28,10 @@ struct TreeNode
 
 		for (item; item != NULL; item = item->next)
 		{
-			item->value->PostOrderR(list);
+			item->data->PostOrderR(list);
 		}
 
-		list->add(this);
+		list->Add(this);
 	}
 
 	void InOrderR(DList<TreeNode<TYPE>*> *list)
@@ -41,15 +41,15 @@ struct TreeNode
 
 		for (unsigned int i = 0; i < mid; i++)
 		{
-			item->value->InOrderR(list);
+			item->data->InOrderR(list);
 			item = item->next;
 		}
 
-		list->add(this);
+		list->Add(this);
 
 		for (; item != NULL; item = item->next)
 		{
-			item->value->InOrderR(list);
+			item->data->InOrderR(list);
 		}
 	}
 };
@@ -110,17 +110,17 @@ public:
 
 	void PreOrderR(DList<TreeNode<TYPE>*> *list) 
 	{
-		root_node.PreOrderR(list);
+		root_node->PreOrderR(list);
 	}
 
 	void PostOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		root_node.PostOrderR(list);
+		root_node->PostOrderR(list);
 	}
 
 	void InOrderR(DList<TreeNode<TYPE>*> *list)
 	{
-		root_node.InOrderR(list);
+		root_node->InOrderR(list);
 	}
 
 	//Iterative methods
