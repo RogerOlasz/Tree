@@ -11,6 +11,19 @@ struct TreeNode
 	TreeNode<TYPE> *parent;
 	DList<TreeNode*> children;
 
+	void Clear()
+	{
+		DNode<TreeNode*> *tmp = children.getFirst();
+		while (tmp != NULL)
+		{
+			tmp->data->Clear();
+			tmp = tmp->next;
+			tmp->data->
+		}
+
+		delete this;
+	}
+
 	void PreOrderR(DList<TreeNode<TYPE>*> *list)
 	{
 		list->add(this);
@@ -89,6 +102,15 @@ public:
 		new_node->parent = parent;
 
 		return new_node;
+	}
+	
+	void Clear()
+	{
+		root_node->Clear();
+	}
+
+	void Clear()
+	{
 	}
 	
 	//Reiterative methods
