@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
+#include "../Tree/Tree.h"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTestTree
@@ -9,9 +11,15 @@ namespace UnitTestTree
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(PreOrderReiterative)
 		{
-			// TODO: Your test code here
+			Tree<int> tree1;
+
+			TreeNode<int> *a = tree1.Add(1);
+			TreeNode<int> *b = tree1.Add(2, a);
+			tree1.Add(3);
+
+			tree1.PreOrderR
 		}
 
 	};

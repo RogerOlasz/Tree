@@ -11,19 +11,6 @@ struct TreeNode
 	TreeNode<TYPE> *parent;
 	DList<TreeNode*> children;
 
-	void Clear()
-	{
-		DNode<TreeNode*> *tmp = children.getFirst();
-		while (tmp != NULL)
-		{
-			tmp->data->Clear();
-			tmp = tmp->next;
-			tmp->data->
-		}
-
-		delete this;
-	}
-
 	void PreOrderR(DList<TreeNode<TYPE>*> *list)
 	{
 		list->add(this);
@@ -106,11 +93,17 @@ public:
 	
 	void Clear()
 	{
-		root_node->Clear();
+		DList<TreeNode<TYPE>*> *list_to_delete;
+
+		PreOrderR(list_to_delete);
+		list_to_delete->DelList();
 	}
 
-	void Clear()
+	void Clear(TreeNode<TYPE> *start_node)
 	{
+		TreeNode<TYPE> *tmp_node = start_node;
+
+		
 	}
 	
 	//Reiterative methods
@@ -148,6 +141,7 @@ public:
 				tmp_dnode = tmp_dnode->previous;
 			}
 		tmp_node = stack.Pop();
+		}
 	}
 
 	void PostOrderI(DList<TreeNode<TYPE>*> *list)
